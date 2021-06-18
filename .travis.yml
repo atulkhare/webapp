@@ -33,8 +33,8 @@ jobs:
         secret_access_key: $AWS_SECRET_KEY
         zip-file: "build/app.jar"
         region: "ap-south-1"
-        app: "webapp"
-        env: "Webapp-env"
+        app: "webapp-1"
+        env: "Webapp1-env"
         bucket_name: "elasticbeanstalk-ap-south-1-274749375098"
         skip_cleanup: true
         only_create_app_version: false

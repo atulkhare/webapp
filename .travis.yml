@@ -15,6 +15,7 @@ jobs:
       - cp target/demo-aws-deployment-0.0.1-SNAPSHOT.jar build/app.jar
       # Run a set of AWS eb commands to deploy application to AWS (Check for AWS Beanstalk logs to check for creation and deployment)
       before_deploy:
+      - chmod +x mvnw
       - export ELASTIC_BEANSTALK_ENV=webapp-${TRAVIS_BRANCH}
       - export ELASTIC_BEANSTALK_LABEL=git-$(git rev-parse --verify HEAD --short)
       - export ELASTIC_BEANSTALK_DESCRIPTION=https://github.com/atulkhare/webapp/tree/$(git rev-parse HEAD)

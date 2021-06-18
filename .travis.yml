@@ -23,7 +23,7 @@ jobs:
       - export ELASTIC_BEANSTALK_LABEL=git-$(git rev-parse --verify HEAD --short)
       - export ELASTIC_BEANSTALK_DESCRIPTION=https://github.com/atulkhare/webapp/tree/$(git rev-parse HEAD)
       - docker pull chriscamicas/awscli-awsebcli
-      - docker run -e $AWS_ACCESS_KEY -e "$AWS_SECRET_KEY" chriscamicas/awscli-awsebcli /bin/sh -c "eb init webapp -p "64bit Amazon Linux 2017.09 v2.6.4 running Java 8" --region "ap-south-1"; eb create Webapp-env --single || true; eb setenv SERVER_PORT=5000"
+      - docker run -e $AWS_ACCESS_KEY -e "$AWS_SECRET_KEY" chriscamicas/awscli-awsebcli /bin/sh -c "eb init webapp-3 -p "64bit Amazon Linux 2017.09 v2.6.4 running Java 8" --region "ap-south-1"; eb create Webapp3-env --single || true; eb setenv SERVER_PORT=5000"
       after_deploy:
       - rm build/app.jar
       # deploy binary from s3 bucket to beanstalk
@@ -33,8 +33,8 @@ jobs:
         secret_access_key: $AWS_SECRET_KEY
         zip-file: "build/app.jar"
         region: "ap-south-1"
-        app: "webapp-2"
-        env: "Webapp2-env"
+        app: "webapp-3"
+        env: "Webapp3-env"
         bucket_name: "elasticbeanstalk-ap-south-1-274749375098"
         skip_cleanup: true
         only_create_app_version: false

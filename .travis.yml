@@ -13,6 +13,9 @@ jobs:
       script:
       - mkdir build
       - cp target/demo-aws-deployment-0.0.1-SNAPSHOT.jar build/app.jar
+      
+      before_install:
+        - chmod +x mvnw
       # Run a set of AWS eb commands to deploy application to AWS (Check for AWS Beanstalk logs to check for creation and deployment)
       before_deploy:
       - chmod +x mvnw
